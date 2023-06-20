@@ -5,22 +5,21 @@ import java.time.LocalDateTime;
 public class Exposure {
 	private UUID patientid;
 	private LocalDateTime dateTime;
-	String exposureType;
+	private String exposureType;
 	
-	public Exposure(UUID patientid) { //Constructor to set id
+	public Exposure(UUID patientid) { 
+		//Constructor to set id
 		this.patientid = patientid;
 	}
 	
-	
-	public static void main(String[] args) {
-		UUID uuid = new UUID((int)2,(int)0);
-		Exposure expo = new Exposure(uuid);
-		expo.setExposureType("I");
-		System.out.println("Patient id:\t\t DateTime:\t\t ExposureType");
-		System.out.println(expo.patientid+"\t"+LocalDateTime.now()+"\t "+expo.exposureType);
-		//Patient p = new Patient(5,5);
-	}
-
+	/*
+	 * // public static void main(String[] args) { // UUID uuid = new
+	 * UUID((int)2,(int)0); // Exposure expo = new Exposure(uuid); //
+	 * expo.setExposureType("I"); //
+	 * System.out.println("Patient id:\t\t DateTime:\t\t ExposureType"); //
+	 * System.out.println(expo.patientid+"\t"+LocalDateTime.now()+"\t "+expo.
+	 * exposureType); // //Patient p = new Patient(5,5); // }
+	 */
 
 	public UUID getPatientid() { //Patient id getter
 		return patientid;
@@ -49,8 +48,7 @@ public class Exposure {
 				this.exposureType = exposureType; //I - indirect exposure
 			}
 			else{
-				IllegalArgumentException iec = new IllegalArgumentException();
-				throw iec;
+				throw new IllegalArgumentException();
 			}
 		}
 	
