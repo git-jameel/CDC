@@ -1,22 +1,60 @@
 package edu.disease.asn1;
+import java.util.Objects;
 import java.util.UUID;
- class Disease {
+
+class Disease {
+	
+	//UUID of the patient
 	 UUID diseaseid;
+	 
+	 //Name of the disease
 	 String name;
-	/* (non-JavaDoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+	 
+	 /**
+	     * Returns id of the disease
+	     *
+	     * @return diseaseId
+	     */
+	    public UUID getDiseaseId() {
+	        return diseaseid;
+	    }
+
+	    /**
+	     * @param diseaseId set the UUID of the disease
+	     */
+	    public void setDiseaseId(UUID diseaseId) {
+	        this.diseaseid = diseaseId;
+	    }
+
+	    /**
+	     * Returns Name of disease
+	     *
+	     * @return name
+	     */
+	    public String getName() {
+	        return name;
+	    }
+
+	    /**
+	     * @param name set the disease name
+	     */
+	    public void setName(String name) {
+	        this.name = name;
+	    }
+	 
+	    /**
+	     * @return hash value which is unique to compare Objects here uniqueness is on patientId
+	     */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((diseaseid == null) ? 0 : diseaseid.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+		return Objects.hash(diseaseid);
 	}
-	/* (non-JavaDoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+	
+	/**
+     * @param obj It accepts Object as a parameter
+     * @return boolean true only when both references that are pointing to same object
+     *         Multiple invocations of it, should return same result, unless any of the object properties is modified that is being used in the equals() method implementation.
+     */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -26,16 +64,17 @@ import java.util.UUID;
 		if (getClass() != obj.getClass())
 			return false;
 		Disease other = (Disease) obj;
-		if (diseaseid == null) {
-			if (other.diseaseid != null)
-				return false;
-		} else if (!diseaseid.equals(other.diseaseid))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+		return Objects.equals(diseaseid, other.diseaseid);
+	}
+	  /**
+     * Print the Disease Class Object values like DiseaseId,Name
+     * @return string with all values declared at class level
+     */
+    @Override
+    public String toString() {
+        return "Disease{" +
+                "diseaseId=" + diseaseid +
+                ", name='" + name +
+                "}";
 	}
 }
